@@ -1,0 +1,50 @@
+---
+# .. vim: foldmarker=[[[,]]]:foldmethod=marker
+
+# ipr-cnrs.openmanage default variables [[[
+# ======================================
+
+# Repository [[[
+# -----------------------------
+
+# .. envvar:: openmanage__repositories [[[
+#
+# List of APT repositories (and related info such gpg keys) that can provide
+# OpenManage. Each entry is a dict that can be used to provide both
+# apt_repository and apt_key.
+#
+openmanage__repositories:
+  # Version 910 - for Debian Stretch and Ubuntu Xenial
+  - repo:          'deb http://linux.dell.com/repo/community/openmanage/910/{{ ansible_distribution_release }} {{ ansible_distribution_release }} main'
+    filename:      'dell.openmanage'
+    key_id:        '1285491434D8786F'
+    key_keyserver: 'pool.sks-keyservers.net'
+    state:         '{{ openmanage__deploy_state
+                       if (ansible_distribution_release in ["stretch", "xenial"])
+                       else "absent" }}'
+  # Previous version for Debian until Jessie and Ubuntu until Trusty
+  - repo:          'deb http://linux.dell.com/repo/community/debian/dists/{{ ansible_distribution_release }} {{ ansible_distribution_release }} openmanage'
+    filename:      'dell.openmanage'
+    key_id:        '1285491434D8786F'
+    key_keyserver: 'pool.sks-keyservers.net'
+    state:         '{{ openmanage__deploy_state
+                       if (ansible_distribution_release not in ["stretch", "xenial"])
+                       else "absent" }}'
+                                                                       # ]]]
+                                                                   # ]]]
+# Packages and installation [[[
+# -----------------------------
+
+# .. envvar:: openmanage__deploy_state [[[
+#
+# What is the desired state which this role should achieve ? Possible options :
+#
+# ``present``
+#   Default. Ensure that openmanage is installed and configured as requested.
+#
+# ``absent``
+#   Ensure that openmanage is uninstalled and it's configuration is removed.
+#
+openmanage__deploy_state: 'absent'
+                                                                   # ]]]
+                                                                   # ]]]

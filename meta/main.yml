@@ -1,0 +1,16 @@
+galaxy_info:
+  author: "Jérémy Gardais"
+  description: "Setup Openmanage"
+  license: WTFPL
+  company: IPR
+  issue_tracker_url: https://git.ipr.univ-rennes1.fr/cellinfo/ansible.netadata/issues
+  min_ansible_version: 2.6
+  platforms:
+  - name: Debian
+    versions:
+    - stretch
+  galaxy_tags:
+    - system
+    - openmanage
+    - idrac
+    - dell
