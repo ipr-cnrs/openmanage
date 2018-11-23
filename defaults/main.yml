@@ -40,11 +40,13 @@ openmanage__repositories:
 # What is the desired state which this role should achieve ? Possible options :
 #
 # ``present``
-#   Default. Ensure that openmanage is installed and configured as requested.
+#   Default for DELL hardware. Ensure that openmanage is installed and configured as requested.
 #
 # ``absent``
 #   Ensure that openmanage is uninstalled and it's configuration is removed.
 #
-openmanage__deploy_state: 'absent'
+openmanage__deploy_state: '{{ "present"
+                              if (ansible_system_vendor is search("Dell"))
+                              else "absent" }}'
                                                                    # ]]]
                                                                    # ]]]

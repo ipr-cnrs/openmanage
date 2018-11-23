@@ -17,7 +17,7 @@ A role to manage Openmanage installation and configuration.
 * **
 openmanage__repositories** : List of APT repositories that can provide OpenManage. Each entry is a dict [default : `See default/main.yml`].
 * **openmanage__base_packages** : List of base packages in order to provide Openmanage [default : `openmanage`].
-* **openmanage__deploy_state** : The desired state this role should achieve. [default : `absent`].
+* **openmanage__deploy_state** : The desired state this role should achieve. [default for Dell hardware : `present`].
 
 ## Example Playbook
 
