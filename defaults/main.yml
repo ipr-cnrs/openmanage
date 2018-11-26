@@ -60,6 +60,13 @@ openmanage__deploy_state: '{{ "present"
 #
 openmanage__install_recommends: False
                                                                    # ]]]
+# .. envvar:: openmanage__dep_packages [[[
+#
+# Fix some dependencies to be able to run racadm.
+#
+openmanage__dep_packages:
+  - 'libargtable2-0'
+                                                                       # ]]]
 # .. envvar:: openmanage__base_packages [[[
 #
 # List of base packages to install.

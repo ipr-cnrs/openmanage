@@ -35,7 +35,17 @@
            openmanage__register_key.changed)
 
 # Manage packages [[[1
-## Manage base system packages
+## Manage depencies packages
+- name: Ensure dependencies are present
+  package:
+    name: '{{ item }}'
+    state: "present"
+    install_recommends: '{{ openmanage__install_recommends | bool }}'
+  with_flattened:
+    - '{{ openmanage__dep_packages | to_nice_json }}'
+  when: (openmanage__deploy_state == "present")
+
+ ## Manage base system packages
 - name: Ensure base packages are in there desired state
   package:
     name: '{{ item }}'
