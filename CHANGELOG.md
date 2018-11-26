@@ -6,3 +6,4 @@
 * Set "present" state for Dell hardware
 * Install dependencies packages
 * Install base packages for all racadm usage
+* Fix libssl error RAC1170

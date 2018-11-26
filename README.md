@@ -38,6 +38,8 @@ This role will :
 * Add an APT repository in order to provide OpenManage.
 * Install dependencies packages.
 * Install basic packages for all racadm usage.
+* Fix idrac7's executable permissions.
+* Fix libssl error RAC1170.
 
 ## Development
 
