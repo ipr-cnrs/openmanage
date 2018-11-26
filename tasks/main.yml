@@ -43,3 +43,10 @@
     install_recommends: '{{ openmanage__install_recommends | bool }}'
   with_flattened:
     - '{{ openmanage__base_packages | to_nice_json }}'
+
+# Executable [[[1
+## Fix some permissions
+- name: Ensure Executables can be run
+  file:
+    path: /opt/dell/srvadmin/sbin/racadm-wrapper-idrac7
+    mode: 0755
