@@ -32,7 +32,7 @@ openmanage__repositories:
                        else "absent" }}'
                                                                        # ]]]
                                                                    # ]]]
-# Packages and installation [[[
+# Installation and Packages [[[
 # -----------------------------
 
 # .. envvar:: openmanage__deploy_state [[[
@@ -49,4 +49,29 @@ openmanage__deploy_state: '{{ "present"
                               if (ansible_system_vendor is search("Dell"))
                               else "absent" }}'
                                                                    # ]]]
+# .. envvar:: openmanage__install_recommends [[[
+#
+# If recommended packages should be install ? Possible options :
+#
+# ``False``
+#   Default.
+#
+# ``True``
+#
+openmanage__install_recommends: False
+                                                                   # ]]]
+# .. envvar:: openmanage__base_packages [[[
+#
+# List of base packages to install.
+#
+openmanage__base_packages:
+  - 'srvadmin-base'
+  - 'srvadmin-idracadm7'
+  - 'srvadmin-idrac-ivmcli'
+  - 'srvadmin-idrac-vmcli'
+  - 'srvadmin-omcommon'
+  - 'srvadmin-server-cli'
+  - 'srvadmin-server-snmp'
+  - 'srvadmin-storageservices'
+                                                                       # ]]]
                                                                    # ]]]

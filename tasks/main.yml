@@ -33,3 +33,13 @@
   when: (openmanage__deploy_state == "present") and
         (openmanage__register_repositories.changed or
            openmanage__register_key.changed)
+
+# Manage packages [[[1
+## Manage base system packages
+- name: Ensure base packages are in there desired state
+  package:
+    name: '{{ item }}'
+    state: '{{ "present" if (openmanage__deploy_state == "present") else "absent" }}'
+    install_recommends: '{{ openmanage__install_recommends | bool }}'
+  with_flattened:
+    - '{{ openmanage__base_packages | to_nice_json }}'

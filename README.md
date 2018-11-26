@@ -16,8 +16,9 @@ A role to manage Openmanage installation and configuration.
 
 * **
 openmanage__repositories** : List of APT repositories that can provide OpenManage. Each entry is a dict [default : `See default/main.yml`].
-* **openmanage__base_packages** : List of base packages in order to provide Openmanage [default : `openmanage`].
 * **openmanage__deploy_state** : The desired state this role should achieve. [default for Dell hardware : `present`].
+* **openmanage__install_recommends** : If recommended packages should be install. [default : `False`].
+* **openmanage__base_packages** : List of base packages for all racadm base usage [default : `See default/main.yml`].
 
 ## Example Playbook
 
@@ -34,6 +35,7 @@ openmanage__repositories** : List of APT repositories that can provide OpenMan
 
 This role will :
 * Add an APT repository in order to provide OpenManage.
+* Install basic packages for all racadm usage.
 
 ## Development
 
