@@ -60,6 +60,7 @@
   file:
     path: /opt/dell/srvadmin/sbin/racadm-wrapper-idrac7
     mode: 0755
+  when: (openmanage__deploy_state == "present")
 
 ## Fix RAC1170 error
 - name: Fix libssl error RAC1170
@@ -67,3 +68,4 @@
     src: "/usr/lib/x86_64-linux-gnu/libssl.so.1.0.2"
     dest: "/opt/dell/srvadmin/lib64/libssl.so"
     state: link
+  when: (openmanage__deploy_state == "present")
