@@ -3,7 +3,7 @@
 
 ### Features
 * Add linux.dell.com repo
-* Set "present" state for Dell hardware
+* Set "present" state for Dell hardware (exclude virtual host)
 * Install dependencies packages
 * Install base packages for all racadm usage
 * Fix libssl error RAC1170

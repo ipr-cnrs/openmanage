@@ -46,7 +46,8 @@ openmanage__repositories:
 #   Ensure that openmanage is uninstalled and it's configuration is removed.
 #
 openmanage__deploy_state: '{{ "present"
-                              if (ansible_system_vendor is search("Dell"))
+                              if (ansible_system_vendor is search("Dell")
+                                 and (ansible_virtualization_role == "host"))
                               else "absent" }}'
                                                                    # ]]]
 # .. envvar:: openmanage__install_recommends [[[
