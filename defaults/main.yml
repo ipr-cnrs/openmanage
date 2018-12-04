@@ -16,6 +16,7 @@
 openmanage__repositories:
   # Version 910 - for Debian Stretch and Ubuntu Xenial
   - repo:          'deb http://linux.dell.com/repo/community/openmanage/910/{{ ansible_distribution_release }} {{ ansible_distribution_release }} main'
+    mode:          '0644'
     filename:      'dell.openmanage'
     key_id:        '1285491434D8786F'
     key_keyserver: 'pool.sks-keyservers.net'
@@ -24,6 +25,7 @@ openmanage__repositories:
                        else "absent" }}'
   # Previous version for Debian until Jessie and Ubuntu until Trusty
   - repo:          'deb http://linux.dell.com/repo/community/debian/dists/{{ ansible_distribution_release }} {{ ansible_distribution_release }} openmanage'
+    mode:          '0644'
     filename:      'dell.openmanage'
     key_id:        '1285491434D8786F'
     key_keyserver: 'pool.sks-keyservers.net'
