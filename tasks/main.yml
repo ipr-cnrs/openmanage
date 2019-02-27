@@ -36,6 +36,8 @@
                              openmanage__register_repositories is changed)
                          else
                       False }}'
+  register: openmanage__register_update
+  until: openmanage__register_update is success
   when: (openmanage__deploy_state == "present")
 
 # Manage packages [[[1
