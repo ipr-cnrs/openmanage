@@ -43,6 +43,8 @@
     install_recommends: '{{ openmanage__install_recommends | bool }}'
   with_flattened:
     - '{{ openmanage__dep_packages | to_nice_json }}'
+  register: pkg_dep_result
+  until: pkg_dep_result is success
   when: (openmanage__deploy_state == "present")
 
  ## Manage base system packages
@@ -53,6 +55,8 @@
     install_recommends: '{{ openmanage__install_recommends | bool }}'
   with_flattened:
     - '{{ openmanage__base_packages | to_nice_json }}'
+  register: pkg_base_result
+  until: pkg_base_result is success
 
 # Executable [[[1
 ## Fix some permissions

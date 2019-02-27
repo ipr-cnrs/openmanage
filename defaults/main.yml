@@ -84,4 +84,11 @@ openmanage__base_packages:
   - 'srvadmin-server-snmp'
   - 'srvadmin-storageservices'
                                                                        # ]]]
+# .. envvar:: openmanage__idrac8_packages [[[
+#
+# List of idrac8 packages to install.
+#
+openmanage__idrac8_packages:
+  - 'srvadmin-idracadm8'
+                                                                       # ]]]
                                                                    # ]]]
