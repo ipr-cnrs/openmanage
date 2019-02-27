@@ -15,6 +15,7 @@
   with_flattened:
     - '{{ openmanage__repositories }}'
   register: openmanage__register_repositories
+  until: openmanage__register_repositories is success
 
 ## Add repository key
 - name: Add OpenManage repo key
@@ -25,6 +26,7 @@
   with_flattened:
     - '{{ openmanage__repositories }}'
   register: openmanage__register_key
+  until: openmanage__register_key is success
 
 ## Update cache
 - name: Update APT cache
