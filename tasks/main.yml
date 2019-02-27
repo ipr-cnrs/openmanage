@@ -29,10 +29,12 @@
 ## Update cache
 - name: Update APT cache
   apt:
-    update_cache: True
-  when: (openmanage__deploy_state == "present") and
-        (openmanage__register_repositories.changed or
-           openmanage__register_key.changed)
+    update_cache: '{{ True
+                         if (openmanage__register_key is changed or
+                             openmanage__register_repositories is changed)
+                         else
+                      False }}'
+  when: (openmanage__deploy_state == "present")
 
 # Manage packages [[[1
 ## Manage depencies packages
