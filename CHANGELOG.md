@@ -1,3 +1,9 @@
+## v1.0.2
+
+### Fix
+
+* Set the correct issue url.
+
 ## v1.0.1
 
 ### Fix
