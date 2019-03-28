@@ -21,6 +21,7 @@ A role to manage Openmanage installation and configuration.
 * **openmanage__base_packages** : List of base packages for all racadm base usage [default : `See default/main.yml`].
 * **openmanage__webgui_state** : The desired state for web interface of OMSA [default  : `absent`].
 * **openmanage__webgui_packages** : List of packages to provide web interface to OMSA [default : `See default/main.yml`].
+* **openmanage__webgui_service_name** : Name of the systemd unit to manage web interface [default : `dsm_om_connsvc`].
 
 ## Example Playbook
 

@@ -1,0 +1,11 @@
+---
+# handlers file for openmanage
+- name: restart webgui service
+  service:
+    name: '{{ openmanage__webgui_service_name }}'
+    state: '{{ "restarted" if (openmanage__deploy_state == "present") and
+                              (openmanage__webgui_state == "present")
+          else "stopped" }}'
+    enabled: '{{ "yes" if (openmanage__deploy_state == "present") and
+                          (openmanage__webgui_state == "present")
+            else "no" }}'

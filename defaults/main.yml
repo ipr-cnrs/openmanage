@@ -109,3 +109,14 @@ openmanage__webgui_packages:
                                                                    # ]]]
 
                                                                    # ]]]
+# Web interface [[[
+# -----------------------------
+
+# .. envvar:: openmanage__webgui_service_name [[[
+#
+# Name of the systemd unit to manage web interface
+#
+openmanage__webgui_service_name: 'dsm_om_connsvc'
+                                                                   # ]]]
+
+                                                                   # ]]]

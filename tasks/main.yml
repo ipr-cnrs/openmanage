@@ -76,6 +76,7 @@
     - '{{ openmanage__webgui_packages | to_nice_json }}'
   register: pkg_webgui_result
   until: pkg_webgui_result is success
+  notify: ['restart webgui service']
 
 # Executable [[[1
 ## Fix some permissions
