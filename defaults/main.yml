@@ -77,18 +77,12 @@ openmanage__dep_packages:
 openmanage__base_packages:
   - 'srvadmin-base'
   - 'srvadmin-idracadm7'
+  - 'srvadmin-idracadm8'
   - 'srvadmin-idrac-ivmcli'
   - 'srvadmin-idrac-vmcli'
   - 'srvadmin-omcommon'
   - 'srvadmin-server-cli'
   - 'srvadmin-server-snmp'
   - 'srvadmin-storageservices'
-                                                                       # ]]]
-# .. envvar:: openmanage__idrac8_packages [[[
-#
-# List of idrac8 packages to install.
-#
-openmanage__idrac8_packages:
-  - 'srvadmin-idracadm8'
                                                                        # ]]]
                                                                    # ]]]

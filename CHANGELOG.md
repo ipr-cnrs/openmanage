@@ -1,3 +1,8 @@
+## v1.X.Y
+
+### Enhancements
+* Install idrac8 (and above) package by default.
+
 ## v1.0.2
 
 ### Fix
