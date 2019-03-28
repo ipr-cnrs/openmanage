@@ -2,6 +2,7 @@
 
 ### Enhancements
 * Install idrac8 (and above) package by default.
+* Install libssl.1.0.0 from Dell repo as base package.
 
 ## v1.0.2
 

@@ -75,6 +75,7 @@ openmanage__dep_packages:
 # List of base packages to install.
 #
 openmanage__base_packages:
+  - 'libssl1.0.0'
   - 'srvadmin-base'
   - 'srvadmin-idracadm7'
   - 'srvadmin-idracadm8'
