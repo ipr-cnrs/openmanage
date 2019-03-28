@@ -1,6 +1,7 @@
 ## v1.X.Y
 
 ### Enhancements
+* Allow to install web interface for OMSA.
 * Install idrac8 (and above) package by default.
 * Install libssl.1.0.0 from Dell repo as base package.
 * Install libxslt1.1 as dependency for om.* apps.

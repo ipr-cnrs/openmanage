@@ -53,7 +53,7 @@
   until: pkg_dep_result is success
   when: (openmanage__deploy_state == "present")
 
- ## Manage base system packages
+## Manage base system packages
 - name: Ensure base packages are in there desired state
   package:
     name: '{{ item }}'
@@ -63,6 +63,19 @@
     - '{{ openmanage__base_packages | to_nice_json }}'
   register: pkg_base_result
   until: pkg_base_result is success
+
+## Manage webgui packages
+- name: Ensure webgui packages are in there desired state
+  package:
+    name: '{{ item }}'
+    state: '{{ "present" if (openmanage__deploy_state == "present") and
+                            (openmanage__webgui_state == "present")
+                            else "absent" }}'
+    install_recommends: '{{ openmanage__install_recommends | bool }}'
+  with_flattened:
+    - '{{ openmanage__webgui_packages | to_nice_json }}'
+  register: pkg_webgui_result
+  until: pkg_webgui_result is success
 
 # Executable [[[1
 ## Fix some permissions

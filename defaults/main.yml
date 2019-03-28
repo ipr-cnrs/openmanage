@@ -87,4 +87,25 @@ openmanage__base_packages:
   - 'srvadmin-server-snmp'
   - 'srvadmin-storageservices'
                                                                        # ]]]
+# .. envvar:: openmanage__webgui_state [[[
+#
+# What is the desired state for web interface of OMSA ? Possible options :
+#
+# ``absent``
+#   Default. Ensure that service is stopped and packages related to web interface
+#   are uninstalled.
+#
+# ``present``
+#   Install related packages and start the service.
+#
+openmanage__webgui_state: "absent"
+                                                                   # ]]]
+# .. envvar:: openmanage__webgui_packages [[[
+#
+# List of packages to provide web interface to OMSA.
+#
+openmanage__webgui_packages:
+  - 'srvadmin-webserver'
+                                                                   # ]]]
+
                                                                    # ]]]
