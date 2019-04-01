@@ -6,6 +6,7 @@
 * Install libssl.1.0.0 from Dell repo as base package.
 * Install libxslt1.1 as dependency for om.* apps.
 * Manage systemd service that provide the web interface.
+* Manage dataeng service to be able to use OpenManage apps.
 
 ## v1.0.2
 

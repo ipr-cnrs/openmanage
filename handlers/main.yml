@@ -1,5 +1,14 @@
 ---
 # handlers file for openmanage
+
+- name: restart dataeng service
+  service:
+    name: 'dataeng'
+    state: '{{ "restarted" if (openmanage__deploy_state == "present")
+          else "stopped" }}'
+    enabled: '{{ "yes" if (openmanage__deploy_state == "present")
+            else "no" }}'
+
 - name: restart webgui service
   service:
     name: '{{ openmanage__webgui_service_name }}'

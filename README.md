@@ -10,7 +10,7 @@
 
 ## Overview
 
-A role to manage Openmanage installation and configuration.
+A role to manage OpenManage (via omreport, omconfig,…), it's web interface OMSA (OpenManage Server Administrator) and iDrac (with racadm)
 
 ## Role Variables
 
@@ -50,6 +50,7 @@ This role will :
 * Add an APT repository in order to provide OpenManage.
 * Install dependencies packages.
 * Install basic packages for all racadm usage.
+* Start dataeng service to be able to use OpenManage applications (omreport, omconfig,…).
 * Install and enable web interface on https://<ip_address>:1311 if requested.
 * Fix idrac7's executable permissions.
 * Fix libssl error RAC1170.
