@@ -23,7 +23,6 @@
     url:       '{{ item.key_url       | d(omit) }}'
     id:        '{{ item.key_id        | d(omit) }}'
     keyserver: '{{ item.key_keyserver | d(omit) }}'
-    state:     '{{ item.state         | d("present") }}'
   with_flattened:
     - '{{ openmanage__repositories }}'
   register: openmanage__register_key
