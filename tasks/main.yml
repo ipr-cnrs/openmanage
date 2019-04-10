@@ -94,3 +94,17 @@
     dest: "/opt/dell/srvadmin/lib64/libssl.so"
     state: link
   when: (openmanage__deploy_state == "present")
+
+## Manage symlinks for OpenManage/racadm apps
+- name: Ensure some Executables are in PATH
+  file:
+    src: "/opt/dell/srvadmin/sbin/{{ item }}"
+    path: "/bin/{{ item }}"
+    state: '{{ "link" if (openmanage__deploy_state == "present")
+                      else "absent" }}'
+  with_items:
+    - 'omconfig'
+    - 'omexec'
+    - 'omreport'
+    - 'omupdate'
+    - 'racadm'

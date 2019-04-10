@@ -7,6 +7,7 @@
 * Install libxslt1.1 as dependency for om.* apps.
 * Manage systemd service that provide the web interface.
 * Manage dataeng service to be able to use OpenManage apps.
+* Manage apps's symlinks to be able to run from $PATH.
 
 ## v1.0.2
 

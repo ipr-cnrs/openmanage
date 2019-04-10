@@ -54,6 +54,7 @@ This role will :
 * Install and enable web interface on https://<ip_address>:1311 if requested.
 * Fix idrac7's executable permissions.
 * Fix libssl error RAC1170.
+* Set up symlinks to be able to run apps from $PATH.
 
 ## Development
 
