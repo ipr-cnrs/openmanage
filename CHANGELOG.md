@@ -1,4 +1,4 @@
-## v1.X.Y
+## v1.1.0
 
 ### Enhancements
 * Allow to install web interface for OMSA.

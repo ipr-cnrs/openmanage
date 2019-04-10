@@ -22,6 +22,7 @@
   apt_key:
     url:       '{{ item.key_url       | d(omit) }}'
     id:        '{{ item.key_id        | d(omit) }}'
+    keyring:   '/etc/apt/trusted.gpg.d/linux.dell.com.gpg'
     keyserver: '{{ item.key_keyserver | d(omit) }}'
   with_flattened:
     - '{{ openmanage__repositories }}'
