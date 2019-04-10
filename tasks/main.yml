@@ -91,7 +91,7 @@
 - name: Fix libssl error RAC1170
   file:
     src: "/usr/lib/x86_64-linux-gnu/libssl.so.1.0.2"
-    dest: "/opt/dell/srvadmin/lib64/libssl.so"
+    path: "/opt/dell/srvadmin/lib64/libssl.so"
     state: link
   when: (openmanage__deploy_state == "present")
 
@@ -100,11 +100,23 @@
   file:
     src: "/opt/dell/srvadmin/sbin/{{ item }}"
     path: "/bin/{{ item }}"
-    state: '{{ "link" if (openmanage__deploy_state == "present")
-                      else "absent" }}'
+    state: "link"
   with_items:
     - 'omconfig'
     - 'omexec'
     - 'omreport'
     - 'omupdate'
     - 'racadm'
+  when: (openmanage__deploy_state == "present")
+
+- name: Remove Executables symlinks
+  file:
+    path: "/bin/{{ item }}"
+    state: "absent"
+  with_items:
+    - 'omconfig'
+    - 'omexec'
+    - 'omreport'
+    - 'omupdate'
+    - 'racadm'
+  when: (openmanage__deploy_state == "absent")
