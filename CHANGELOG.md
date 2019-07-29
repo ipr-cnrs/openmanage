@@ -1,3 +1,9 @@
+## v1.X.Y
+
+### Enhancements
+
+* Install apt_key only if deploy_state = present.
+
 ## v1.1.0
 
 ### Enhancements

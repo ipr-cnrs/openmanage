@@ -18,6 +18,7 @@
   until: openmanage__register_repositories is success
 
 ## Add repository key
+### Don't remove the APT key, cause differents repos can have the same key
 - name: Add OpenManage repo key
   apt_key:
     url:       '{{ item.key_url       | d(omit) }}'
@@ -28,6 +29,7 @@
     - '{{ openmanage__repositories }}'
   register: openmanage__register_key
   until: openmanage__register_key is success
+  when: (openmanage__deploy_state == "present")
 
 ## Update cache
 - name: Update APT cache
