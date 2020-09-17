@@ -82,6 +82,15 @@
   until: pkg_webgui_result is success
   notify: ['restart webgui service']
 
+## Remove all OpenManage packages if requested
+- name: Ensure to remove OpenManage related packages if requested
+  package:
+    name: 'srvadmin*'
+    state: "absent"
+  register: pkg_remove_result
+  until: pkg_remove_result is success
+  when: (openmanage__deploy_state == "absent")
+
 # Executable [[[1
 ## Fix some permissions
 - name: Ensure Executables can be run

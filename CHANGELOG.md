@@ -3,6 +3,7 @@
 ### Enhancements
 
 * Install apt_key only if deploy_state = present.
+* Remove all OpenManage related packages if deploy_state = absent.
 
 ## v1.1.0
 
