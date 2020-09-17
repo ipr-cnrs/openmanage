@@ -1,9 +1,10 @@
-## v1.X.Y
+## v1.2.0
 
 ### Enhancements
 
 * Install apt_key only if deploy_state = present.
 * Remove all OpenManage related packages if deploy_state = absent.
+* Packages installation don't need to restart service.
 
 ## v1.1.0
 

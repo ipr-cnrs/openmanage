@@ -66,7 +66,6 @@
     - '{{ openmanage__base_packages | to_nice_json }}'
   register: pkg_base_result
   until: pkg_base_result is success
-  notify: ['restart dataeng service']
 
 ## Manage OMSA webgui packages
 - name: Ensure OMSA-webgui packages are in there desired state
