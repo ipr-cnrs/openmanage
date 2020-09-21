@@ -56,6 +56,21 @@
   until: pkg_dep_result is success
   when: (openmanage__deploy_state == "present")
 
+- name: Dont install libssl1.0.0 on Buster
+  set_fact:
+    openmanage__base_packages:
+      - 'srvadmin-base'
+      - 'srvadmin-idracadm7'
+      - 'srvadmin-idracadm8'
+      - 'srvadmin-idrac-ivmcli'
+      - 'srvadmin-idrac-vmcli'
+      - 'srvadmin-omcommon'
+      - 'srvadmin-server-cli'
+      - 'srvadmin-server-snmp'
+      - 'srvadmin-storageservices'
+  when: (ansible_distribution_release == "buster")
+
+
 ## Manage base system packages
 - name: Ensure base packages are in there desired state
   package:
@@ -104,7 +119,7 @@
     src: "/usr/lib/x86_64-linux-gnu/libssl.so.1.0.2"
     path: "/opt/dell/srvadmin/lib64/libssl.so"
     state: link
-  when: (openmanage__deploy_state == "present")
+  when: (openmanage__deploy_state == "present" and ansible_distribution_release != "buster")
 
 ## Manage symlinks for OpenManage/racadm apps
 - name: Ensure some Executables are in PATH
