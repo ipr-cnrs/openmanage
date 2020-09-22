@@ -82,13 +82,19 @@
   notify: ['restart webgui service']
 
 ## Remove all OpenManage packages if requested
+- name: Gather the Package facts
+  package_facts:
+    manager: auto
+
 - name: Ensure to remove OpenManage related packages if requested
   package:
     name: 'srvadmin*'
     state: "absent"
   register: pkg_remove_result
   until: pkg_remove_result is success
-  when: (openmanage__deploy_state == "absent")
+  when:
+    - (openmanage__deploy_state == "absent")
+    - "'srvadmin' in ansible_facts.packages"
 
 # Executable [[[1
 ## Fix some permissions
