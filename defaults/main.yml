@@ -23,14 +23,15 @@ openmanage__repositories:
     state:         '{{ openmanage__deploy_state
                        if (ansible_distribution_release in ["stretch", "xenial"])
                        else "absent" }}'
-  # Previous version for Debian until Jessie and Ubuntu until Trusty
+  # Previous OpenManage version for Debian until Jessie and Ubuntu until Trusty
   - repo:          'deb http://linux.dell.com/repo/community/debian/dists/{{ ansible_distribution_release }} {{ ansible_distribution_release }} openmanage'
     mode:          '0644'
     filename:      'dell.openmanage'
     key_id:        '1285491434D8786F'
     key_keyserver: 'pool.sks-keyservers.net'
     state:         '{{ openmanage__deploy_state
-                       if (ansible_distribution_release not in ["stretch", "xenial"])
+                       if ((ansible_distribution == "Debian" and ansible_distribution_major_version is version("8", "<=")) or
+                           (ansible_distribution == "Ubuntu" and ansible_distribution_version is version("14.04", "<=")))
                        else "absent" }}'
                                                                        # ]]]
                                                                    # ]]]

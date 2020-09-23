@@ -1,3 +1,10 @@
+## v1.x.y
+
+### Enhancements
+
+* Skip "Ensure to remove OpenManage related packages if requested" when it's not install (with package facts).
+* Repositories for Debian Jessie and Ubuntu Trusty won't need modifications with new OS versions.
+
 ## v1.2.0
 
 ### Enhancements
