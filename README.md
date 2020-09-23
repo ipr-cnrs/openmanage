@@ -19,6 +19,7 @@ A role to manage OpenManage (via omreport, omconfig,…), it's web interface OMS
 * **openmanage__install_recommends** : If recommended packages should be install [default : `False`].
 * **openmanage__dep_packages** : List of dependencies packages to be able to run racadm [default : `See default/main.yml`].
 * **openmanage__base_packages** : List of base packages for all racadm base usage [default : `See default/main.yml`].
+* **openmanage__ssl_packages** : List of SSL related packages to fix some dependencies on old versions [default : `See default/main.yml`].
 * **openmanage__webgui_state** : The desired state for web interface of OMSA [default  : `absent`].
 * **openmanage__webgui_packages** : List of packages to provide web interface to OMSA [default : `See default/main.yml`].
 * **openmanage__webgui_service_name** : Name of the systemd unit to manage web interface [default : `dsm_om_connsvc`].
@@ -53,7 +54,7 @@ This role will :
 * Start dataeng service to be able to use OpenManage applications (omreport, omconfig,…).
 * Install and enable web interface on https://<ip_address>:1311 if requested.
 * Fix idrac7's executable permissions.
-* Fix libssl error RAC1170.
+* Fix libssl error RAC1170 (until Debian Stretch or Ubuntu Xenial).
 * Set up symlinks to be able to run apps from $PATH.
 
 ## Development
@@ -63,6 +64,8 @@ This source code comes from our [Gogs instance][openmanage source] and the [Gith
 But feel free to send issue/PR here :)
 
 Thanks to this [hook][gogs to github hook], Github automatically got updates from our [Gogs instance][openmanage source] :)
+
+Thanks to @roumano
 
 ## License
 

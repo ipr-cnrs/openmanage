@@ -68,7 +68,7 @@
   until: pkg_ssl_result is success
   when: (openmanage__deploy_state == "present" and
         ( (ansible_distribution == "Debian" and ansible_distribution_major_version is version("9", "<=")) or
-          (ansible_distribution == "Ubuntu" and ansible_distribution_version is version("16.04", "<=")))
+          (ansible_distribution == "Ubuntu" and ansible_distribution_version is version("16.04", "<="))))
 
 ## Manage base system packages
 - name: Ensure base packages are in there desired state
@@ -126,7 +126,7 @@
     state: link
   when: (openmanage__deploy_state == "present" and
         ( (ansible_distribution == "Debian" and ansible_distribution_major_version is version("9", "<=")) or
-          (ansible_distribution == "Ubuntu" and ansible_distribution_version is version("16.04", "<=")))
+          (ansible_distribution == "Ubuntu" and ansible_distribution_version is version("16.04", "<="))))
 
 ## Manage symlinks for OpenManage/racadm apps
 - name: Ensure some Executables are in PATH
