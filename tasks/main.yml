@@ -56,6 +56,20 @@
   until: pkg_dep_result is success
   when: (openmanage__deploy_state == "present")
 
+## Manage SSL packages
+- name: Ensure SSL required packages are present
+  package:
+    name: '{{ item }}'
+    state: "present"
+    install_recommends: '{{ openmanage__install_recommends | bool }}'
+  with_flattened:
+    - '{{ openmanage__ssl_packages | to_nice_json }}'
+  register: pkg_ssl_result
+  until: pkg_ssl_result is success
+  when: (openmanage__deploy_state == "present" and
+        ( (ansible_distribution == "Debian" and ansible_distribution_major_version is version("9", "<=")) or
+          (ansible_distribution == "Ubuntu" and ansible_distribution_version is version("16.04", "<=")))
+
 ## Manage base system packages
 - name: Ensure base packages are in there desired state
   package:
@@ -110,7 +124,9 @@
     src: "/usr/lib/x86_64-linux-gnu/libssl.so.1.0.2"
     path: "/opt/dell/srvadmin/lib64/libssl.so"
     state: link
-  when: (openmanage__deploy_state == "present")
+  when: (openmanage__deploy_state == "present" and
+        ( (ansible_distribution == "Debian" and ansible_distribution_major_version is version("9", "<=")) or
+          (ansible_distribution == "Ubuntu" and ansible_distribution_version is version("16.04", "<=")))
 
 ## Manage symlinks for OpenManage/racadm apps
 - name: Ensure some Executables are in PATH

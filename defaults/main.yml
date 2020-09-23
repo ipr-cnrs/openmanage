@@ -87,7 +87,6 @@ openmanage__dep_packages:
 # List of base packages to install.
 #
 openmanage__base_packages:
-  - 'libssl1.0.0'
   - 'srvadmin-base'
   - 'srvadmin-idracadm7'
   - 'srvadmin-idracadm8'
@@ -97,6 +96,16 @@ openmanage__base_packages:
   - 'srvadmin-server-cli'
   - 'srvadmin-server-snmp'
   - 'srvadmin-storageservices'
+                                                                       # ]]]
+# .. envvar:: openmanage__ssl_packages [[[
+#
+# List of SSL related packages to install.
+#
+# Required until Debian Stretch and Ubuntu Xenial
+# to fix some dependencies
+#
+openmanage__ssl_packages:
+  - 'libssl1.0.0'
                                                                        # ]]]
 # .. envvar:: openmanage__webgui_state [[[
 #

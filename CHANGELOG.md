@@ -5,6 +5,7 @@
 * Skip "Ensure to remove OpenManage related packages if requested" when it's not install (with package facts).
 * Repositories for Debian Jessie and Ubuntu Trusty won't need modifications with new OS versions.
 * Add support for Debian Buster and (not tested) Ubuntu Bionic.
+* Manage SSL lib until Debian Stretch or Ubuntu Xenial (fix #2).
 
 ## v1.2.0
 
