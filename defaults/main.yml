@@ -14,6 +14,16 @@
 # apt_repository and apt_key.
 #
 openmanage__repositories:
+  # Version 940 - for Debian Buster and Ubuntu Bionic
+  # Force using Bionic repo as Buster repo doesn't exist and Bionic is based on Debian Buster
+  - repo:          'deb http://linux.dell.com/repo/community/openmanage/940/bionic bionic main'
+    mode:          '0644'
+    filename:      'dell.openmanage'
+    key_id:        '1285491434D8786F'
+    key_keyserver: 'pool.sks-keyservers.net'
+    state:         '{{ openmanage__deploy_state
+                       if (ansible_distribution_release in ["buster", "bionic"])
+                       else "absent" }}'
   # Version 910 - for Debian Stretch and Ubuntu Xenial
   - repo:          'deb http://linux.dell.com/repo/community/openmanage/910/{{ ansible_distribution_release }} {{ ansible_distribution_release }} main'
     mode:          '0644'
