@@ -90,22 +90,23 @@ openmanage__base_packages:
   - 'srvadmin-base'
   - 'srvadmin-idracadm7'
   - 'srvadmin-idracadm8'
-  - 'srvadmin-idrac-ivmcli'
-  - 'srvadmin-idrac-vmcli'
   - 'srvadmin-omcommon'
   - 'srvadmin-server-cli'
   - 'srvadmin-server-snmp'
   - 'srvadmin-storageservices'
                                                                        # ]]]
-# .. envvar:: openmanage__ssl_packages [[[
+# .. envvar:: openmanage__stretch_packages [[[
 #
-# List of SSL related packages to install.
+# List of some packages specific to Debian Stretch (or Ubuntu Xenial)
+# and previous versions.
 #
-# Required until Debian Stretch and Ubuntu Xenial
-# to fix some dependencies
+# Contains required packages (libssl…) and some packages that are no
+# longer presents in more recent versions of OpenManage.
 #
-openmanage__ssl_packages:
+openmanage__stretch_packages:
   - 'libssl1.0.0'
+  - 'srvadmin-idrac-ivmcli'
+  - 'srvadmin-idrac-vmcli'
                                                                        # ]]]
 # .. envvar:: openmanage__webgui_state [[[
 #

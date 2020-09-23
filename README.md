@@ -19,7 +19,7 @@ A role to manage OpenManage (via omreport, omconfig,…), it's web interface OMS
 * **openmanage__install_recommends** : If recommended packages should be install [default : `False`].
 * **openmanage__dep_packages** : List of dependencies packages to be able to run racadm [default : `See default/main.yml`].
 * **openmanage__base_packages** : List of base packages for all racadm base usage [default : `See default/main.yml`].
-* **openmanage__ssl_packages** : List of SSL related packages to fix some dependencies on old versions [default : `See default/main.yml`].
+* **openmanage__stretch_packages** : List of some packages specific to Debian Stretch (or Ubuntu Xenial) and previous versions [default : `See default/main.yml`].
 * **openmanage__webgui_state** : The desired state for web interface of OMSA [default  : `absent`].
 * **openmanage__webgui_packages** : List of packages to provide web interface to OMSA [default : `See default/main.yml`].
 * **openmanage__webgui_service_name** : Name of the systemd unit to manage web interface [default : `dsm_om_connsvc`].
