@@ -80,6 +80,7 @@ openmanage__install_recommends: False
 #
 openmanage__dep_packages:
   - 'libargtable2-0'
+  - 'libncurses5'
   - 'libxslt1.1'
                                                                        # ]]]
 # .. envvar:: openmanage__base_packages [[[

@@ -1,4 +1,10 @@
-## v1.x.y
+## v1.3.1
+
+### Fix
+
+* Add missing libncurses5 dependency.
+
+## v1.3.0
 
 ### Enhancements
 
@@ -36,6 +42,7 @@
 ## v1.0.1
 
 ### Fix
+
 * Fix E405 Remote package tasks should have a retry.
 
 ## v1.0.0
