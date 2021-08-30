@@ -20,7 +20,7 @@ openmanage__repositories:
     mode:          '0644'
     filename:      'dell.openmanage'
     key_id:        '1285491434D8786F'
-    key_keyserver: 'pool.sks-keyservers.net'
+    key_url:       'https://linux.dell.com/repo/pgp_pubkeys/0x1285491434D8786F.asc'
     state:         '{{ openmanage__deploy_state
                        if (ansible_distribution_release in ["buster", "bionic"])
                        else "absent" }}'
@@ -29,7 +29,7 @@ openmanage__repositories:
     mode:          '0644'
     filename:      'dell.openmanage'
     key_id:        '1285491434D8786F'
-    key_keyserver: 'pool.sks-keyservers.net'
+    key_url:       'https://linux.dell.com/repo/pgp_pubkeys/0x1285491434D8786F.asc'
     state:         '{{ openmanage__deploy_state
                        if (ansible_distribution_release in ["stretch", "xenial"])
                        else "absent" }}'
@@ -38,7 +38,7 @@ openmanage__repositories:
     mode:          '0644'
     filename:      'dell.openmanage'
     key_id:        '1285491434D8786F'
-    key_keyserver: 'pool.sks-keyservers.net'
+    key_url:       'https://linux.dell.com/repo/pgp_pubkeys/0x1285491434D8786F.asc'
     state:         '{{ openmanage__deploy_state
                        if ((ansible_distribution == "Debian" and ansible_distribution_major_version is version("8", "<=")) or
                            (ansible_distribution == "Ubuntu" and ansible_distribution_version is version("14.04", "<=")))

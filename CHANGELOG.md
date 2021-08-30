@@ -1,3 +1,9 @@
+## v1.X.Y
+
+### Fix
+
+* Use key_url instead of [deprecated SKS keyserver](https://sks-keyservers.net/).
+
 ## v1.3.1
 
 ### Fix
