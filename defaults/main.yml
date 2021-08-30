@@ -14,6 +14,16 @@
 # apt_repository and apt_key.
 #
 openmanage__repositories:
+  # Version 10100 - for Debian Bullseye and Ubuntu Focal
+  # Force using Focal repo as Bullseye repo doesn't exist and Focal is based on Debian Bullseye
+  - repo:          'deb http://linux.dell.com/repo/community/openmanage/10100/focal focal main'
+    mode:          '0644'
+    filename:      'dell.openmanage'
+    key_id:        '1285491434D8786F'
+    key_url:       'https://linux.dell.com/repo/pgp_pubkeys/0x1285491434D8786F.asc'
+    state:         '{{ openmanage__deploy_state
+                       if (ansible_distribution_release in ["bullseye", "focal"])
+                       else "absent" }}'
   # Version 940 - for Debian Buster and Ubuntu Bionic
   # Force using Bionic repo as Buster repo doesn't exist and Bionic is based on Debian Buster
   - repo:          'deb http://linux.dell.com/repo/community/openmanage/940/bionic bionic main'

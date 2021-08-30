@@ -4,6 +4,10 @@
 
 * Use key_url instead of [deprecated SKS keyserver](https://sks-keyservers.net/).
 
+### Enhancements
+
+* Repository version 10.1.0.0 for Debian Bullseye and Ubuntu Focal.
+
 ## v1.3.1
 
 ### Fix
