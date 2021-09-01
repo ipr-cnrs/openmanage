@@ -3,6 +3,7 @@
 ### Fix
 
 * Use key_url instead of [deprecated SKS keyserver](https://sks-keyservers.net/).
+* Truthy warnings with ansible-lint.
 
 ### Enhancements
 

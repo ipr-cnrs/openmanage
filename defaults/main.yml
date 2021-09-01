@@ -77,12 +77,12 @@ openmanage__deploy_state: '{{ "present"
 #
 # If recommended packages should be install ? Possible options :
 #
-# ``False``
+# ``false``
 #   Default.
 #
-# ``True``
+# ``true``
 #
-openmanage__install_recommends: False
+openmanage__install_recommends: false
                                                                    # ]]]
 # .. envvar:: openmanage__dep_packages [[[
 #

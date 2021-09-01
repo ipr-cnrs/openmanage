@@ -7,7 +7,7 @@
 ## Add repository
 - name: Add OpenManage repository
   apt_repository:
-    update_cache: False
+    update_cache: false
     repo:     '{{ item.repo }}'
     mode:     '{{ item.mode     | d(omit) }}'
     filename: '{{ item.filename | d(omit) }}'
@@ -34,11 +34,11 @@
 ## Update cache
 - name: Update APT cache
   apt:
-    update_cache: '{{ True
+    update_cache: '{{ true
                          if (openmanage__register_key is changed or
                              openmanage__register_repositories is changed)
                          else
-                      False }}'
+                      false }}'
   register: openmanage__register_update
   until: openmanage__register_update is success
   when: (openmanage__deploy_state == "present")
