@@ -141,6 +141,37 @@ openmanage__webgui_packages:
                                                                    # ]]]
 
                                                                    # ]]]
+# Service management [[[
+# ----------------------
+
+# .. envvar:: openmanage__snmpd_service_name [[[
+#
+# SNMPD service name to manage.
+openmanage__snmpd_service_name: 'snmpd'
+                                                                   # ]]]
+# .. envvar:: openmanage__snmpd_service_enabled [[[
+#
+# If the SNMPD service should be enabled at startup ? Possible options are :
+#
+# ``true``
+#   Default. The service is enabled.
+#
+# ``false``
+#   The service is disabled from startup.
+openmanage__snmpd_service_enabled: true
+                                                                   # ]]]
+# .. envvar:: openmanage__snmpd_service_override_path [[[
+#
+# Path to store SNMPD custom conf.
+openmanage__snmpd_service_override_path: '/etc/systemd/system/snmpd.service.d/override.conf'
+                                                                   # ]]]
+# .. envvar:: openmanage__snmpd_service_override_content [[[
+#
+# Template used to provide systemd custom conf for SNMPD service.
+openmanage__snmpd_service_override_content: 'etc/systemd/system/snmpd.service.d/override.conf.j2'
+                                                                   # ]]]
+
+                                                                   # ]]]
 # Web interface [[[
 # -----------------------------
 

@@ -1,4 +1,4 @@
-## v1.X.Y
+## v1.4.0
 
 ### Fix
 
@@ -8,6 +8,9 @@
 ### Enhancements
 
 * Repository version 10.1.0.0 for Debian Bullseye and Ubuntu Focal.
+* Manage custom configuration for snmpd systemd service on Debian Buster.
+The point is to fix the error message :
+**snmpd[...]: error on subcontainer 'ia_addr' insert (-1)**
 
 ## v1.3.1
 

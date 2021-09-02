@@ -110,6 +110,29 @@
     - (openmanage__deploy_state == "absent")
     - "'srvadmin' in ansible_facts.packages"
 
+# Manage configuration [[[1
+- name: Create SNMPD custom directory for systemd service
+  file:
+    path: "{{ openmanage__snmpd_service_override_path | dirname }}"
+    state: directory
+    mode: '0755'
+  when:
+    - openmanage__deploy_state == "present"
+    - ansible_distribution_release in ["buster"]
+
+- name: Add SNMPD systemd custom configuration
+  template:
+    src: '{{ openmanage__snmpd_service_override_content }}'
+    dest: '{{ openmanage__snmpd_service_override_path }}'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  register: openmanage__snmpd_register_systemd_custom
+  when:
+    - openmanage__deploy_state == "present"
+    - ansible_distribution_release in ["buster"]
+  notify: ['Restart snmpd service']
+
 # Executable [[[1
 ## Fix some permissions
 - name: Ensure Executables can be run

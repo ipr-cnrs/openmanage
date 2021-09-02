@@ -1,0 +1,7 @@
+# {{ ansible_managed }}
+
+[Service]
+# Fix error message: snmpd[...]: error on subcontainer 'ia_addr' insert (-1)
+# By fixing logging options (-Lsd to -LS6d).
+ExecStart=
+ExecStart=/usr/sbin/snmpd -LS6d -Lf /dev/null -u Debian-snmp -g Debian-snmp -I -smux,mteTrigger,mteTriggerConf -f -p /run/snmpd.pid

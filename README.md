@@ -20,6 +20,10 @@ A role to manage OpenManage (via omreport, omconfig,…), it's web interface OMS
 * **openmanage__dep_packages** : List of dependencies packages to be able to run racadm [default : `See default/main.yml`].
 * **openmanage__base_packages** : List of base packages for all racadm base usage [default : `See default/main.yml`].
 * **openmanage__stretch_packages** : List of some packages specific to Debian Stretch (or Ubuntu Xenial) and previous versions [default : `See default/main.yml`].
+* **openmanage__snmpd_service_name** : SNMPD service name to manage [default  : `snmpd`].
+* **openmanage__snmpd_service_enabled** : If the SNMPD service should be enabled at startup [default  : `true`].
+* **openmanage__snmpd_service_override_path** : Path to store SNMPD custom conf [default  : `/etc/systemd/system/snmpd.service.d/override.conf`].
+* **openmanage__snmpd_service_override_content** : Template used to provide systemd custom conf for SNMPD service [default  : `etc/systemd/system/snmpd.service.d/override.conf.j2`].
 * **openmanage__webgui_state** : The desired state for web interface of OMSA [default  : `absent`].
 * **openmanage__webgui_packages** : List of packages to provide web interface to OMSA [default : `See default/main.yml`].
 * **openmanage__webgui_service_name** : Name of the systemd unit to manage web interface [default : `dsm_om_connsvc`].

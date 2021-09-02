@@ -4,6 +4,8 @@ dependencies: []
 
 galaxy_info:
   author: "Jérémy Gardais"
+  namespace: ipr-cnrs
+  role_name: openmanage
   description: "Setup Openmanage"
   license: WTFPL
   company: IPR
@@ -12,8 +14,9 @@ galaxy_info:
   platforms:
   - name: Debian
     versions:
-    - stretch
+    - bullseye
     - buster
+    - stretch
   galaxy_tags:
     - system
     - openmanage

@@ -1,6 +1,17 @@
 ---
 # handlers file for openmanage
 
+- name: Restart snmpd service
+  systemd:
+    daemon_reload: '{{ (openmanage__snmpd_register_systemd_custom.changed | default(False)) }}'
+    state: '{{ "restarted" if (openmanage__snmpd_service_enabled)
+           else "stopped" }}'
+    name: '{{ openmanage__snmpd_service_name }}'
+    enabled: '{{ openmanage__snmpd_service_enabled }}'
+  when:
+    - openmanage__deploy_state == "present"
+    - ansible_service_mgr == 'systemd'
+
 - name: restart dataeng service
   service:
     name: 'dataeng'
