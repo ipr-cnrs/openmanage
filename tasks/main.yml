@@ -47,11 +47,9 @@
 ## Manage depencies packages
 - name: Ensure dependencies are present
   package:
-    name: '{{ item }}'
+    name: '{{ openmanage__dep_packages | flatten }}'
     state: "present"
     install_recommends: '{{ openmanage__install_recommends | bool }}'
-  with_flattened:
-    - '{{ openmanage__dep_packages | to_nice_json }}'
   register: pkg_dep_result
   until: pkg_dep_result is success
   when: (openmanage__deploy_state == "present")
@@ -59,11 +57,9 @@
 ## Manage Debian Stretch (or Ubuntu Xenial) specific packages
 - name: "Ensure 910 specific packages (Stretch|Xenial) are in there desired state"
   package:
-    name: '{{ item }}'
+    name: '{{ openmanage__stretch_packages | flatten }}'
     state: "present"
     install_recommends: '{{ openmanage__install_recommends | bool }}'
-  with_flattened:
-    - '{{ openmanage__stretch_packages | to_nice_json }}'
   register: pkg_stretch_result
   until: pkg_stretch_result is success
   when: (openmanage__deploy_state == "present" and
@@ -73,24 +69,20 @@
 ## Manage base system packages
 - name: Ensure base packages are in there desired state
   package:
-    name: '{{ item }}'
+    name: '{{ openmanage__base_packages | flatten }}'
     state: '{{ "present" if (openmanage__deploy_state == "present") else "absent" }}'
     install_recommends: '{{ openmanage__install_recommends | bool }}'
-  with_flattened:
-    - '{{ openmanage__base_packages | to_nice_json }}'
   register: pkg_base_result
   until: pkg_base_result is success
 
 ## Manage OMSA webgui packages
 - name: Ensure OMSA-webgui packages are in there desired state
   package:
-    name: '{{ item }}'
+    name: '{{ openmanage__webgui_packages | flatten }}'
     state: '{{ "present" if (openmanage__deploy_state == "present") and
                             (openmanage__webgui_state == "present")
                             else "absent" }}'
     install_recommends: '{{ openmanage__install_recommends | bool }}'
-  with_flattened:
-    - '{{ openmanage__webgui_packages | to_nice_json }}'
   register: pkg_webgui_result
   until: pkg_webgui_result is success
   notify: ['restart webgui service']
