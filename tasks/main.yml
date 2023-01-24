@@ -6,7 +6,7 @@
 # Manage repository [[[1
 ## Add repository
 - name: Add OpenManage repository
-  apt_repository:
+  ansible.builtin.apt_repository:
     update_cache: false
     repo:     '{{ item.repo }}'
     mode:     '{{ item.mode     | d(omit) }}'
@@ -20,7 +20,7 @@
 ## Add repository key
 ### Don't remove the APT key, cause differents repos can have the same key
 - name: Add OpenManage repo key
-  apt_key:
+  ansible.builtin.apt_key:
     url:       '{{ item.key_url       | d(omit) }}'
     id:        '{{ item.key_id        | d(omit) }}'
     keyring:   '/etc/apt/trusted.gpg.d/linux.dell.com.gpg'
@@ -33,7 +33,7 @@
 
 ## Update cache
 - name: Update APT cache
-  apt:
+  ansible.builtin.apt:
     update_cache: '{{ true
                          if (openmanage__register_key is changed or
                              openmanage__register_repositories is changed)
@@ -46,7 +46,7 @@
 # Manage packages [[[1
 ## Manage depencies packages
 - name: Ensure dependencies are present
-  package:
+  ansible.builtin.package:
     name: '{{ openmanage__dep_packages | flatten }}'
     state: "present"
     install_recommends: '{{ openmanage__install_recommends | bool }}'
@@ -56,7 +56,7 @@
 
 ## Manage Debian Stretch (or Ubuntu Xenial) specific packages
 - name: "Ensure 910 specific packages (Stretch|Xenial) are in there desired state"
-  package:
+  ansible.builtin.package:
     name: '{{ openmanage__stretch_packages | flatten }}'
     state: "present"
     install_recommends: '{{ openmanage__install_recommends | bool }}'
@@ -68,7 +68,7 @@
 
 ## Manage base system packages
 - name: Ensure base packages are in there desired state
-  package:
+  ansible.builtin.package:
     name: '{{ openmanage__base_packages | flatten }}'
     state: '{{ "present" if (openmanage__deploy_state == "present") else "absent" }}'
     install_recommends: '{{ openmanage__install_recommends | bool }}'
@@ -77,7 +77,7 @@
 
 ## Manage OMSA webgui packages
 - name: Ensure OMSA-webgui packages are in there desired state
-  package:
+  ansible.builtin.package:
     name: '{{ openmanage__webgui_packages | flatten }}'
     state: '{{ "present" if (openmanage__deploy_state == "present") and
                             (openmanage__webgui_state == "present")
@@ -89,11 +89,11 @@
 
 ## Remove all OpenManage packages if requested
 - name: Gather the Package facts
-  package_facts:
+  ansible.builtin.package_facts:
     manager: auto
 
 - name: Ensure to remove OpenManage related packages if requested
-  package:
+  ansible.builtin.package:
     name: 'srvadmin*'
     state: "absent"
   register: pkg_remove_result
@@ -104,7 +104,7 @@
 
 # Manage configuration [[[1
 - name: Create SNMPD custom directory for systemd service
-  file:
+  ansible.builtin.file:
     path: "{{ openmanage__snmpd_service_override_path | dirname }}"
     state: directory
     mode: '0755'
@@ -113,7 +113,7 @@
     - ansible_distribution_release in ["buster"]
 
 - name: Add SNMPD systemd custom configuration
-  template:
+  ansible.builtin.template:
     src: '{{ openmanage__snmpd_service_override_content }}'
     dest: '{{ openmanage__snmpd_service_override_path }}'
     owner: 'root'
@@ -128,14 +128,14 @@
 # Executable [[[1
 ## Fix some permissions
 - name: Ensure Executables can be run
-  file:
+  ansible.builtin.file:
     path: /opt/dell/srvadmin/sbin/racadm-wrapper-idrac7
     mode: 0755
   when: (openmanage__deploy_state == "present")
 
 ## Fix RAC1170 error
 - name: Fix libssl error RAC1170
-  file:
+  ansible.builtin.file:
     src: "/usr/lib/x86_64-linux-gnu/libssl.so.1.0.2"
     path: "/opt/dell/srvadmin/lib64/libssl.so"
     state: link
@@ -145,7 +145,7 @@
 
 ## Manage symlinks for OpenManage/racadm apps
 - name: Ensure some Executables are in PATH
-  file:
+  ansible.builtin.file:
     src: "/opt/dell/srvadmin/sbin/{{ item }}"
     path: "/bin/{{ item }}"
     state: "link"
@@ -158,7 +158,7 @@
   when: (openmanage__deploy_state == "present")
 
 - name: Remove Executables symlinks
-  file:
+  ansible.builtin.file:
     path: "/bin/{{ item }}"
     state: "absent"
   with_items:
