@@ -1,3 +1,8 @@
+## v1.5.0
+### Enhancements
+
+* Repository version 11.0.0.0 for Debian Bookworm and Ubuntu Jammy.
+
 ## v1.4.1
 
 ### Fix
